@@ -1,0 +1,181 @@
+{
+  "marbles": [
+    {
+      "file": "flawless-white.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/01/425X526_POPULAR-MARBLE-FLAWLESS-WHITE.jpg",
+      "name": "Flawless White Marble",
+      "category": "Popular Marble",
+      "localImage": "/marble/flawless-white.jpg"
+    },
+    {
+      "file": "italian-marble.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/01/425X526_POPULAR-MARBLE-ITALIAN.jpg",
+      "name": "Italian Marble",
+      "category": "Imported Marble",
+      "localImage": "/marble/italian-marble.jpg"
+    },
+    {
+      "file": "imported-marble.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/01/425X526_POPULAR-MARBLE-IMPORTED-MARBLE.jpg",
+      "name": "Imported Marble Collection",
+      "category": "Imported Marble",
+      "localImage": "/marble/imported-marble.jpg"
+    },
+    {
+      "file": "onyx-marble.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/01/425X526_POPULAR-MARBLE-ONYX.jpg",
+      "name": "Onyx Marble",
+      "category": "Exotic Onyx",
+      "localImage": "/marble/onyx-marble.jpg"
+    },
+    {
+      "file": "statuario-marble.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/01/425X526_POPULAR-MARBLE-STATUARIO.jpg",
+      "name": "Statuario Marble",
+      "category": "Italian Marble",
+      "localImage": "/marble/statuario-marble.jpg"
+    },
+    {
+      "file": "travertine-marble.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/01/425X526_POPULAR-MARBLE-TRAVERTINE.jpg",
+      "name": "Travertine Marble",
+      "category": "Travertine",
+      "localImage": "/marble/travertine-marble.jpg"
+    },
+    {
+      "file": "panda-white.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/02/167-318X510_FEATURED-IMAGE-Panda-White.jpg",
+      "name": "Panda White Marble",
+      "category": "Popular Marble",
+      "localImage": "/marble/panda-white.jpg"
+    },
+    {
+      "file": "michael-angelo.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/02/143-318X510_FEATURED-IMAGE-Michael-Angelo.jpg",
+      "name": "Michael Angelo Marble",
+      "category": "Italian Marble",
+      "localImage": "/marble/michael-angelo.jpg"
+    },
+    {
+      "file": "golden-spider.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/02/96-318X510_FEATURED-IMAGE-Golden-Spider-1.jpg",
+      "name": "Golden Spider Marble",
+      "category": "Exotic Marble",
+      "localImage": "/marble/golden-spider.jpg"
+    },
+    {
+      "file": "volakas-white.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/02/236-318X510_FEATURED-IMAGE-Volakas-White.jpg",
+      "name": "Volakas White Marble",
+      "category": "Imported Marble",
+      "localImage": "/marble/volakas-white.jpg"
+    },
+    {
+      "file": "bianco-waves.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/02/249-318X510_FEATURED-IMAGE-Bianco-Waves.jpg",
+      "name": "Bianco Waves Marble",
+      "category": "Popular Marble",
+      "localImage": "/marble/bianco-waves.jpg"
+    },
+    {
+      "file": "white-equator.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/02/240-318X510_FEATURED-IMAGE-White-Equator.jpg",
+      "name": "White Equator Marble",
+      "category": "Linear Marble",
+      "localImage": "/marble/white-equator.jpg"
+    },
+    {
+      "file": "silver-dove.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/02/201-318X510_FEATURED-IMAGE-Silver-Dove.jpg",
+      "name": "Silver Dove Marble",
+      "category": "Grey Marble",
+      "localImage": "/marble/silver-dove.jpg"
+    },
+    {
+      "file": "monte-bianco.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/02/149-318X510_FEATURED-IMAGE-Monte-Bianco.jpg",
+      "name": "Monte Bianco Marble",
+      "category": "Popular Marble",
+      "localImage": "/marble/monte-bianco.jpg"
+    },
+    {
+      "file": "cats-eye.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/02/53-318X510_FEATURED-IMAGE-Cats-Eye-2.jpg",
+      "name": "Cat's Eye Marble",
+      "category": "Exotic Marble",
+      "localImage": "/marble/cats-eye.jpg"
+    }
+  ],
+  "granites": [
+    {
+      "file": "black-granite.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/01/425X526_GRANITE-BY-COLOURS-BLACK.jpg",
+      "name": "Exotic Black Granite",
+      "category": "Black Granite",
+      "localImage": "/granite/black-granite.jpg"
+    },
+    {
+      "file": "blue-granite.png",
+      "url": "https://rkmarble.com/uploads/wp/2023/03/Blue-Granite.png",
+      "name": "Royal Blue Granite",
+      "category": "Blue Granite",
+      "localImage": "/granite/blue-granite.png"
+    },
+    {
+      "file": "brown-granite.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/01/425X526_GRANITE-BY-COLOURS-BROWN.jpg",
+      "name": "Imperial Brown Granite",
+      "category": "Brown Granite",
+      "localImage": "/granite/brown-granite.jpg"
+    },
+    {
+      "file": "green-granite.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/01/425X526_GRANITE-BY-COLOURS-GREEN.jpg",
+      "name": "Emerald Green Granite",
+      "category": "Green Granite",
+      "localImage": "/granite/green-granite.jpg"
+    },
+    {
+      "file": "grey-granite.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/01/425X526_GRANITE-BY-COLOURS-GREY.jpg",
+      "name": "Steel Grey Granite",
+      "category": "Grey Granite",
+      "localImage": "/granite/grey-granite.jpg"
+    },
+    {
+      "file": "red-granite.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/01/425X526_GRANITE-BY-COLOURS-RED.jpg",
+      "name": "Ruby Red Granite",
+      "category": "Red Granite",
+      "localImage": "/granite/red-granite.jpg"
+    },
+    {
+      "file": "white-granite.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/01/425X526_GRANITE-BY-COLOURS-WHITE.jpg",
+      "name": "Colonial White Granite",
+      "category": "White Granite",
+      "localImage": "/granite/white-granite.jpg"
+    },
+    {
+      "file": "yellow-granite.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/01/425X526_GRANITE-BY-COLOURS-YELLOW.jpg",
+      "name": "Gold & Yellow Granite",
+      "category": "Yellow Granite",
+      "localImage": "/granite/yellow-granite.jpg"
+    },
+    {
+      "file": "venetian-brown.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/02/230-318X510_FEATURED-IMAGE-Venetian-Brown.jpg",
+      "name": "Venetian Brown Granite",
+      "category": "Exotic Granite",
+      "localImage": "/granite/venetian-brown.jpg"
+    },
+    {
+      "file": "versilia-grey.jpg",
+      "url": "https://rkmarble.com/uploads/wp/2023/02/232-318X510_FEATURED-IMAGE-Versilia-Grey.jpg",
+      "name": "Versilia Grey Granite",
+      "category": "Exotic Granite",
+      "localImage": "/granite/versilia-grey.jpg"
+    }
+  ]
+}

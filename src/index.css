@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Arthemis';
+  src: url('/Arthemis.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Exthing';
+  src: url('/Exthing.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg-primary: #f8f7f4;
+  --bg-secondary: #efede8;
+  --bg-dark: #1f1f1f;
+  --primary: #2c2c2c;
+  --primary-light: #4a4a4a;
+  --stone-light: #d8d3cb;
+  --stone-medium: #a39d95;
+  --stone-dark: #6b6761;
+  --accent: #8a6a1f;
+  --accent-light: #b08b35;
+  --accent-dark: #6d5317;
+  --text-primary: #222222;
+  --text-secondary: #5e5e5e;
+  --text-light: #ffffff;
+  --border-light: #e2dfd9;
+  --border-dark: #4f4f4f;
+  --success: #4f7c4f;
+  --warning: #b3832f;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  overflow-x: hidden;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-arthemis {
+  font-family: 'Arthemis', serif;
+}
+
+.font-exthing {
+  font-family: 'Exthing', cursive;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: 2s ease-in-out infinite float;
+}
+
+.animate-float-delay {
+  animation: 2s ease-in-out 0.4s infinite float;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1f1f1f;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-light);
+}
