@@ -134,7 +134,7 @@ export const Hero: React.FC = () => {
                     transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
                   },
                 }}
-                className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight overflow-hidden"
+                className="text-3xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight overflow-hidden"
               >
                 {slides[current].title}
               </motion.h1>
