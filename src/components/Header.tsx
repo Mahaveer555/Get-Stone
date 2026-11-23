@@ -33,6 +33,18 @@ export const Header: React.FC = () => {
     setOpenMobileSection(null);
   }
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
   const kotaStoneLinks = [
     { name: 'Kota Stone Slabs', path: '/products/kota-stone', desc: 'Natural & High Polish Blue Slabs' },
     { name: 'River Wash Stone', path: '/products/river-wash-stone', desc: 'Textured Non-Slip Outdoor Paving' },
@@ -59,12 +71,13 @@ export const Header: React.FC = () => {
   const isGraniteActive = currentPath.includes('granite');
 
   return (
-    <motion.header
-      initial={{ y: -25, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 w-full z-40 bg-[rgba(248,247,244,0.92)] backdrop-blur-lg border-b border-[var(--border-light)] shadow-xs"
-    >
+    <>
+      <motion.header
+        initial={{ y: -25, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed top-0 left-0 w-full z-40 bg-[rgba(248,247,244,0.92)] backdrop-blur-lg border-b border-[var(--border-light)] shadow-xs"
+      >
       {/* Topbar */}
       <div
         className={`hidden lg:block overflow-hidden transition-all duration-500 bg-[var(--primary)] text-white ${
@@ -273,227 +286,238 @@ export const Header: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-[var(--primary)] hover:text-[var(--accent)] focus:outline-none"
-            aria-label="Toggle menu"
+            className="lg:hidden p-2.5 rounded-md text-[var(--primary)] hover:text-[var(--accent)] hover:bg-black/5 active:scale-95 focus:outline-none touch-manipulation cursor-pointer"
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
       </div>
+    </motion.header>
 
-      {/* Mobile Off-Canvas Slide-Over Drawer */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <div className="fixed inset-0 z-50 lg:hidden overflow-hidden">
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={() => setMobileMenuOpen(false)}
-              className="absolute inset-0 bg-black/60 backdrop-blur-xs"
-            />
+    {/* Mobile Off-Canvas Slide-Over Drawer OUTSIDE motion.header */}
+    <AnimatePresence>
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[100] lg:hidden overflow-hidden">
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setMobileMenuOpen(false)}
+            className="absolute inset-0 bg-black/60 backdrop-blur-xs"
+          />
 
-            {/* Slide-In Panel from Right */}
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 28, stiffness: 260 }}
-              className="absolute inset-y-0 right-0 w-[85vw] max-w-sm bg-white shadow-2xl flex flex-col z-10"
-            >
-              {/* Drawer Header */}
-              <div className="p-6 border-b border-[var(--border-light)] flex items-center justify-between">
+          {/* Slide-In Panel from Right */}
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 28, stiffness: 260 }}
+            className="absolute inset-y-0 right-0 w-[85vw] max-w-sm bg-white shadow-2xl flex flex-col z-10"
+          >
+            {/* Drawer Header */}
+            <div className="p-6 border-b border-[var(--border-light)] flex items-center justify-between">
+              <Link to="/" onClick={() => setMobileMenuOpen(false)}>
                 <span className="font-cinzel text-2xl tracking-[0.14em] text-[var(--text-primary)] font-extrabold uppercase">
                   GET STONE
                 </span>
+              </Link>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-9 h-9 rounded-full bg-[var(--bg-primary)] hover:bg-[var(--accent)] hover:text-white flex items-center justify-center transition-colors text-[var(--text-primary)] cursor-pointer active:scale-95 touch-manipulation"
+                aria-label="Close Mobile Menu"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Drawer Links Body */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-4">
+              <Link
+                to="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1"
+              >
+                Home
+              </Link>
+
+              <Link
+                to="/about"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1"
+              >
+                About Us
+              </Link>
+
+              {/* 1. Mobile Kota Stone Accordion */}
+              <div className="border-t border-[var(--border-light)] pt-3">
                 <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-9 h-9 rounded-full bg-[var(--bg-primary)] hover:bg-[var(--accent)] hover:text-white flex items-center justify-center transition-colors text-[var(--text-primary)]"
-                  aria-label="Close Mobile Menu"
+                  onClick={() => setOpenMobileSection(openMobileSection === 'kota' ? null : 'kota')}
+                  className="w-full flex items-center justify-between text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1 cursor-pointer"
                 >
-                  <X size={18} />
+                  <span className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
+                    Kota Stone
+                  </span>
+                  <ChevronDown
+                    size={15}
+                    className={`transition-transform duration-300 ${
+                      openMobileSection === 'kota' ? 'rotate-180 text-[var(--accent)]' : ''
+                    }`}
+                  />
                 </button>
+                <AnimatePresence>
+                  {openMobileSection === 'kota' && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="pl-4 mt-2 space-y-2 border-l-2 border-[var(--accent)] overflow-hidden"
+                    >
+                      {kotaStoneLinks.map((prod) => (
+                        <Link
+                          key={prod.name}
+                          to={prod.path}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block text-xs text-[var(--text-secondary)] hover:text-[var(--accent)] py-1"
+                        >
+                          {prod.name}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
-              {/* Drawer Links Body */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-4">
-                <Link
-                  to="/"
-                  className="block text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1"
+              {/* 2. Mobile Marble Accordion */}
+              <div className="border-t border-[var(--border-light)] pt-3">
+                <button
+                  onClick={() => setOpenMobileSection(openMobileSection === 'marble' ? null : 'marble')}
+                  className="w-full flex items-center justify-between text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1 cursor-pointer"
                 >
-                  Home
-                </Link>
-
-                <Link
-                  to="/about"
-                  className="block text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1"
-                >
-                  About Us
-                </Link>
-
-                {/* 1. Mobile Kota Stone Accordion */}
-                <div className="border-t border-[var(--border-light)] pt-3">
-                  <button
-                    onClick={() => setOpenMobileSection(openMobileSection === 'kota' ? null : 'kota')}
-                    className="w-full flex items-center justify-between text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1"
-                  >
-                    <span className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
-                      Kota Stone
-                    </span>
-                    <ChevronDown
-                      size={15}
-                      className={`transition-transform duration-300 ${
-                        openMobileSection === 'kota' ? 'rotate-180 text-[var(--accent)]' : ''
-                      }`}
-                    />
-                  </button>
-                  <AnimatePresence>
-                    {openMobileSection === 'kota' && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="pl-4 mt-2 space-y-2 border-l-2 border-[var(--accent)] overflow-hidden"
-                      >
-                        {kotaStoneLinks.map((prod) => (
-                          <Link
-                            key={prod.name}
-                            to={prod.path}
-                            className="block text-xs text-[var(--text-secondary)] hover:text-[var(--accent)] py-1"
-                          >
-                            {prod.name}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* 2. Mobile Marble Accordion */}
-                <div className="border-t border-[var(--border-light)] pt-3">
-                  <button
-                    onClick={() => setOpenMobileSection(openMobileSection === 'marble' ? null : 'marble')}
-                    className="w-full flex items-center justify-between text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1"
-                  >
-                    <span className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
-                      Marble
-                    </span>
-                    <ChevronDown
-                      size={15}
-                      className={`transition-transform duration-300 ${
-                        openMobileSection === 'marble' ? 'rotate-180 text-[var(--accent)]' : ''
-                      }`}
-                    />
-                  </button>
-                  <AnimatePresence>
-                    {openMobileSection === 'marble' && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="pl-4 mt-2 space-y-2 border-l-2 border-[var(--accent)] overflow-hidden"
-                      >
-                        {marbleLinks.map((prod) => (
-                          <Link
-                            key={prod.name}
-                            to={prod.path}
-                            className="block text-xs text-[var(--text-secondary)] hover:text-[var(--accent)] py-1"
-                          >
-                            {prod.name}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* 3. Mobile Granite Accordion */}
-                <div className="border-t border-[var(--border-light)] pt-3">
-                  <button
-                    onClick={() => setOpenMobileSection(openMobileSection === 'granite' ? null : 'granite')}
-                    className="w-full flex items-center justify-between text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1"
-                  >
-                    <span className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
-                      Granite
-                    </span>
-                    <ChevronDown
-                      size={15}
-                      className={`transition-transform duration-300 ${
-                        openMobileSection === 'granite' ? 'rotate-180 text-[var(--accent)]' : ''
-                      }`}
-                    />
-                  </button>
-                  <AnimatePresence>
-                    {openMobileSection === 'granite' && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="pl-4 mt-2 space-y-2 border-l-2 border-[var(--accent)] overflow-hidden"
-                      >
-                        {graniteLinks.map((prod) => (
-                          <Link
-                            key={prod.name}
-                            to={prod.path}
-                            className="block text-xs text-[var(--text-secondary)] hover:text-[var(--accent)] py-1"
-                          >
-                            {prod.name}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                <div className="border-t border-[var(--border-light)] pt-3">
-                  <Link
-                    to="/gallery"
-                    className="block text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1"
-                  >
-                    Gallery
-                  </Link>
-                </div>
-
-                <div>
-                  <Link
-                    to="/contact"
-                    className="block text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1"
-                  >
-                    Contact
-                  </Link>
-                </div>
-
-                {/* Mobile Drawer Bottom Actions */}
-                <div className="pt-6 border-t border-[var(--border-light)] space-y-3">
-                  <button
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      openQuoteDrawer('Kota Stone');
-                    }}
-                    className="w-full flex items-center justify-center gap-2 py-3 bg-[var(--accent)] text-white text-xs uppercase tracking-wider font-semibold shadow-xs"
-                  >
-                    <span>Get Instant Quote</span>
-                    <ArrowUpRight size={14} />
-                  </button>
-
-                  <a
-                    href="tel:+919214567181"
-                    className="w-full flex items-center justify-center gap-2 py-3 bg-[#007AFF] hover:bg-[#0066d6] text-white text-xs uppercase tracking-wider font-semibold transition-colors shadow-sm"
-                  >
-                    <Phone size={14} />
-                    <span>Call: +91 92145 67181</span>
-                  </a>
-                </div>
+                  <span className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
+                    Marble
+                  </span>
+                  <ChevronDown
+                    size={15}
+                    className={`transition-transform duration-300 ${
+                      openMobileSection === 'marble' ? 'rotate-180 text-[var(--accent)]' : ''
+                    }`}
+                  />
+                </button>
+                <AnimatePresence>
+                  {openMobileSection === 'marble' && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="pl-4 mt-2 space-y-2 border-l-2 border-[var(--accent)] overflow-hidden"
+                    >
+                      {marbleLinks.map((prod) => (
+                        <Link
+                          key={prod.name}
+                          to={prod.path}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block text-xs text-[var(--text-secondary)] hover:text-[var(--accent)] py-1"
+                        >
+                          {prod.name}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-    </motion.header>
-  );
+
+              {/* 3. Mobile Granite Accordion */}
+              <div className="border-t border-[var(--border-light)] pt-3">
+                <button
+                  onClick={() => setOpenMobileSection(openMobileSection === 'granite' ? null : 'granite')}
+                  className="w-full flex items-center justify-between text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1 cursor-pointer"
+                >
+                  <span className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
+                    Granite
+                  </span>
+                  <ChevronDown
+                    size={15}
+                    className={`transition-transform duration-300 ${
+                      openMobileSection === 'granite' ? 'rotate-180 text-[var(--accent)]' : ''
+                    }`}
+                  />
+                </button>
+                <AnimatePresence>
+                  {openMobileSection === 'granite' && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="pl-4 mt-2 space-y-2 border-l-2 border-[var(--accent)] overflow-hidden"
+                    >
+                      {graniteLinks.map((prod) => (
+                        <Link
+                          key={prod.name}
+                          to={prod.path}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block text-xs text-[var(--text-secondary)] hover:text-[var(--accent)] py-1"
+                        >
+                          {prod.name}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <div className="border-t border-[var(--border-light)] pt-3">
+                <Link
+                  to="/gallery"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1"
+                >
+                  Gallery
+                </Link>
+              </div>
+
+              <div>
+                <Link
+                  to="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] py-1"
+                >
+                  Contact
+                </Link>
+              </div>
+
+              {/* Mobile Drawer Bottom Actions */}
+              <div className="pt-6 border-t border-[var(--border-light)] space-y-3">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    openQuoteDrawer('Kota Stone');
+                  }}
+                  className="w-full flex items-center justify-center gap-2 py-3 bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white text-xs uppercase tracking-wider font-semibold shadow-xs cursor-pointer active:scale-97 transition-all"
+                >
+                  <span>Get Instant Quote</span>
+                  <ArrowUpRight size={14} />
+                </button>
+
+                <a
+                  href="tel:+919214567181"
+                  className="w-full flex items-center justify-center gap-2 py-3 bg-[#007AFF] hover:bg-[#0066d6] text-white text-xs uppercase tracking-wider font-semibold transition-colors shadow-sm active:scale-97"
+                >
+                  <Phone size={14} />
+                  <span>Call: +91 92145 67181</span>
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  </>
+);
 };
